@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Energy Community Eligibility Map</title>
+  <meta name="author" content="Tejas Saberwal" />
+<meta
+  name="description"
+  content="Interactive Energy Community eligibility screening map for county-level fossil fuel employment and tract-level coal closure screening."
+/>
+  <link rel="stylesheet" href="maplibre-gl.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <div class="panel" id="panel">
+    <div class="title">Energy Community Eligibility</div>
+    <div class="subtitle">County-level FFE + tract-level coal closure screening</div>
+
+    <div class="row">
+      <input
+        id="searchBox"
+        type="text"
+        placeholder="Search address, city, county, FIPS, tract GEOID, or coordinates"
+      />
+      <button id="searchBtn" type="button">Search</button>
+    </div>
+
+    <div class="search-help">
+      Examples: <code>35.4676, -97.5164</code>, <code>Pueblo County, CO</code>,
+      <code>08089</code>, <code>06079012102</code>, or <code>Oklahoma City, OK</code>.
+    </div>
+
+    <div class="toggles">
+      <label>
+        <input type="checkbox" id="toggleCounty" checked />
+        Show FFE counties
+      </label>
+
+      <label>
+        <input type="checkbox" id="toggleTract" checked />
+        Show coal-closure tracts
+      </label>
+    </div>
+
+    <div class="legend">
+      <div class="legend-title">Legend</div>
+
+      <div class="legend-item">
+        <span class="swatch green"></span>
+        <span>Fossil Fuel Employment county eligible</span>
+      </div>
+
+      <div class="legend-item">
+        <span class="swatch blue"></span>
+        <span>Coal-closure census tract eligible</span>
+      </div>
+
+      <div class="legend-item">
+        <span class="legend-line county-line"></span>
+        <span>County boundary</span>
+      </div>
+
+      <div class="legend-item">
+        <span class="legend-line tract-line"></span>
+        <span>Eligible census tract boundary</span>
+      </div>
+    </div>
+
+<div class="note" id="note">
+  Search drops a marker and checks whether the point falls inside an eligible FFE county
+  and/or an eligible coal-closure census tract. Coal-closure eligibility is determined at
+  the census tract level.
+  <br /><br />
+  This tool is for screening and informational purposes only. Eligibility conclusions should be
+  verified against official IRS, DOE, Treasury, and other applicable guidance before being used
+  for tax, legal, investment, or project diligence decisions.
+</div>
+
+<div class="credit">
+  Built by <strong>Tejas Saberwal</strong> · © 2026 · All rights reserved
+</div>
+
+  <script src="maplibre-gl.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
